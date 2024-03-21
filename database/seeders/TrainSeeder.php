@@ -18,7 +18,7 @@ class TrainSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-   
+        for( $i = 0; $i < 10000; $i++ ){
         $train = new Train();
 
         $train->Azienda = $faker->company();
@@ -27,14 +27,17 @@ class TrainSeeder extends Seeder
         $train->Stazione_di_arrivo = $faker->address();
         $train->Orario_di_partenza = $faker->date() . " " . $faker->time();
         $train->Orario_di_arrivo = $faker->date() . " " . $faker->time();
+
         $train_code = "";  
-        for ($i = 0; $i < 5; $i++) {
+        for ($y = 0; $y < 5; $y++) {
             $train_code .= $faker->randomLetter();
         }
         $train->Codice_Treno = $train_code;
       
         $train->Numero_Carrozze = $faker->numberBetween(4,30);
         $train->save();
+        }
+        
     }
 }
 
